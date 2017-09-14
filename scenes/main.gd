@@ -9,17 +9,19 @@ func _ready():
 	set_process_input(true)
 
 func _process(delta):
-	isXPressed = false
-	isYPressed = false
-	
 	if !isYPressed:
 		y.set_value(0)
+	else:
+		OS.execute("notify-send", ["-t", "1000", "title", "text"], true)
 	if !isXPressed:
 		x.set_value(0)
 	print(str("valor de x: ", isXPressed))
 	print(str("valor de y: ", isYPressed))
 
 func _input(event):
+	isXPressed = false
+	isYPressed = false
+	
 	if event.is_action_pressed("ui_up"):
 		y.set_val(10)
 		isYPressed = true
